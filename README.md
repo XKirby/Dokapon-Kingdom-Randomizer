@@ -83,7 +83,7 @@ Depending on which version you have, there's different steps to take. You'll wan
 	- SERIOUSLY RANDOMIZE Consumable Item Prices (Boolean):
 		Only shows up if Consumables are allowed to be randomized.
 		This only affects anything you'd obtain that counts as either a Consumable (crystals, spinners, etc) or as a Gift for the King (gemstones, food, etc). It can make things insanely expensive.
-	NOTE: Seriously randomizing anything with Random Prices enabled will randomize their prices dramatically like the consumable randomizer option listed above.
+	NOTE: Seriously randomizing anything with Random Prices enabled will randomize their prices dramatically.
 	
 - Allow Exploits (Boolean):
 	This allows some exploitable Items to be put into Shops and ignores Loot Space Types in regards to Loot Space Drop Table Randomization.

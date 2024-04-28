@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Kirbo\\Desktop\\Dokapon Kingdom Randomizer C#\\Dokapon Kingdom Randomizer\\Dokapon Kingdom Randomizer.csproj": {}
+    "C:\\Users\\Kirbo\\Documents\\GitHub\\Dokapon-Kingdom-Randomizer\\Dokapon Kingdom Randomizer.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Kirbo\\Desktop\\Dokapon Kingdom Randomizer C#\\Dokapon Kingdom Randomizer\\Dokapon Kingdom Randomizer.csproj": {
+    "C:\\Users\\Kirbo\\Documents\\GitHub\\Dokapon-Kingdom-Randomizer\\Dokapon Kingdom Randomizer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Kirbo\\Desktop\\Dokapon Kingdom Randomizer C#\\Dokapon Kingdom Randomizer\\Dokapon Kingdom Randomizer.csproj",
+        "projectUniqueName": "C:\\Users\\Kirbo\\Documents\\GitHub\\Dokapon-Kingdom-Randomizer\\Dokapon Kingdom Randomizer.csproj",
         "projectName": "Dokapon Kingdom Randomizer",
-        "projectPath": "C:\\Users\\Kirbo\\Desktop\\Dokapon Kingdom Randomizer C#\\Dokapon Kingdom Randomizer\\Dokapon Kingdom Randomizer.csproj",
+        "projectPath": "C:\\Users\\Kirbo\\Documents\\GitHub\\Dokapon-Kingdom-Randomizer\\Dokapon Kingdom Randomizer.csproj",
         "packagesPath": "C:\\Users\\Kirbo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Kirbo\\Desktop\\Dokapon Kingdom Randomizer C#\\Dokapon Kingdom Randomizer\\obj\\",
+        "outputPath": "C:\\Users\\Kirbo\\Documents\\GitHub\\Dokapon-Kingdom-Randomizer\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Kirbo\\AppData\\Roaming\\NuGet\\NuGet.Config",

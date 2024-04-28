@@ -773,7 +773,7 @@ namespace DokaponKingdomRandomizer
             if ((bool)settings[2]) { using (outputLog = File.AppendText(filePath + "_" + (int)settings[0] + ".txt")) { outputLog.WriteLine("\n\n == MONSTER DROPS TABLE == "); outputLog.Close(); } }
 
             // Monster Drop Tables
-            MatchCollection monsterdrops = rgx_dropsspaces.Matches(fileString, LocDropsMonsters[version]);
+            MatchCollection monsterdrops = rgx_dropsmonsters.Matches(fileString, LocDropsMonsters[version]);
             foreach (Match s in monsterdrops)
             {
                 // Split the groups found using Regex
@@ -829,6 +829,7 @@ namespace DokaponKingdomRandomizer
                         {
                             outputLog.WriteLine("Monster Drop Item ID Changes: " + oldItemID + ", " + oldItemTableID + " -> " + newItemID + ", " + newItemTableID);
                             outputLog.WriteLine("Drop Chance Changes: " + dropChances[0] + ", " + dropChances[1] + " -> " + newChances[0] + ", " + newChances[1]);
+                            outputLog.WriteLine("");
                             outputLog.Close();
                         }
                     }
@@ -866,7 +867,7 @@ namespace DokaponKingdomRandomizer
 
             // Write to output log, if it exists
             StreamWriter outputLog;
-            if ((bool)settings[6]) { using (outputLog = File.AppendText(filePath + "_" + (int)settings[0] + ".txt")) { outputLog.WriteLine("\n\n == EQUIPMENT SHOPS TABLE == "); outputLog.Close(); } }
+            if ((bool)settings[6]) { using (outputLog = File.AppendText(filePath + "_" + (int)settings[0] + ".txt")) { outputLog.WriteLine("\n\n == ITEMS TABLE == "); outputLog.Close(); } }
 
             // Consumables
             MatchCollection consumables = rgx_consumables.Matches(fileString, LocStatsConsumables[version]);
@@ -905,7 +906,7 @@ namespace DokaponKingdomRandomizer
                 fileData[g[7].Index + 2] = (byte)((price[1] >> 16) % 0x100);
                 fileData[g[7].Index + 3] = (byte)((price[1] >> 24) % 0x100);
 
-                if ((bool)settings[2])
+                if ((bool)settings[6])
                 {
                     using (outputLog = File.AppendText(filePath + "_" + (int)settings[0] + ".txt"))
                     {

@@ -9,7 +9,7 @@ namespace DokaponKingdomRandomizer
         // PC-based stageBase_EN.DAT offsets are on the right
 
         // Version Number
-        private static string RandomVersion = "2.0.1.1";
+        private static string RandomVersion = "2.0.1.2";
 
         // Base File
         public static string[] FileBase = new string[2] { "GAME.PAC", "stageBase_EN.DAT" };
@@ -1183,13 +1183,13 @@ namespace DokaponKingdomRandomizer
                 }
 
                 // Multiply and Clamp the Monster stats
-                hp[1] = Math.Clamp((int)((float)hp[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[2]) * (float)settings[3]), 1, 9999);
-                atk[1] = Math.Clamp((int)((float)atk[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[2]) * (float)settings[3]), 1, 999);
-                def[1] = Math.Clamp((int)((float)def[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[2]) * (float)settings[3]), 1, 999);
-                mag[1] = Math.Clamp((int)((float)mag[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[2]) * (float)settings[3]), 1, 999);
-                spd[1] = Math.Clamp((int)((float)spd[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[2]) * (float)settings[3]), 1, 999);
-                xp[1] = Math.Clamp((int)((float)xp[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[2]) * (float)settings[3]), 1, 30000);
-                gold[1] = Math.Clamp((int)((float)gold[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[2]) * (float)settings[3]), -30000, 30000);
+                hp[1] = Math.Clamp((int)((float)hp[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[3]) * (float)settings[2]), 1, 9999);
+                atk[1] = Math.Clamp((int)((float)atk[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[3]) * (float)settings[2]), 1, 999);
+                def[1] = Math.Clamp((int)((float)def[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[3]) * (float)settings[2]), 1, 999);
+                mag[1] = Math.Clamp((int)((float)mag[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[3]) * (float)settings[2]), 1, 999);
+                spd[1] = Math.Clamp((int)((float)spd[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[3]) * (float)settings[2]), 1, 999);
+                xp[1] = Math.Clamp((int)((float)xp[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[3]) * (float)settings[2]), 1, 30000);
+                gold[1] = Math.Clamp((int)((float)gold[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[3]) * (float)settings[2]), -30000, 30000);
 
                 // Write data to file
 

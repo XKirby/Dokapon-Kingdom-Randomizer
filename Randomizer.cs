@@ -8,6 +8,9 @@ namespace DokaponKingdomRandomizer
         // Wii-based GAME.PAC offsets are on the left
         // PC-based stageBase_EN.DAT offsets are on the right
 
+        // Version Number
+        private static string RandomVersion = "2.0.1.0";
+
         // Base File
         public static string[] FileBase = new string[2] { "GAME.PAC", "stageBase_EN.DAT" };
 
@@ -42,9 +45,12 @@ namespace DokaponKingdomRandomizer
             {
                 // Display introduction message and ask for version
                 Console.WriteLine("""
-                |-V2.0--------------------------------|
+                 -------------------------------------
                  Dokapon Kingdom Randomizer by X Kirby
-                |-------------------------------------|
+                  v
+                """ + RandomVersion + "\n" +
+                """
+                -------------------------------------
                 
                 Wii (0) or PC (1)? Use any other value to shutdown.> 
                 """);
@@ -750,8 +756,8 @@ namespace DokaponKingdomRandomizer
                 for (int i = 0; i < g[3].Length; i+=2)
                 {
                     // Store Old Item ID and its Table ID.
-                    byte oldItemID = (byte)(fileData[g[3].Index]);
-                    byte oldItemTableID = (byte)(fileData[g[3].Index + 1]);
+                    byte oldItemID = (byte)(fileData[g[3].Index + i]);
+                    byte oldItemTableID = (byte)(fileData[g[3].Index + i + 1]);
 
                     // Store New Item ID and its Table ID. Use old Table ID if "Exploits" aren't enabled.
                     byte newItemTableID = oldItemTableID;
@@ -760,8 +766,8 @@ namespace DokaponKingdomRandomizer
                     byte newItemID = GetRandomItem(RNG, (int)settings[0], newItemTableID);
                     
                     // Write Data to File
-                    fileData[g[3].Index] = newItemID;
-                    fileData[g[3].Index + 1] = newItemTableID;
+                    fileData[g[3].Index + i] = newItemID;
+                    fileData[g[3].Index + i + 1] = newItemTableID;
 
                     // Write to Output Log in Detail, if enabled
                     if ((bool)settings[2]) { using (outputLog = File.AppendText(filePath + "_" + (int)settings[0] + ".txt")) { outputLog.WriteLine("Loot Space Drop Item ID Changes: " + oldItemID + ", " + oldItemTableID + " -> " + newItemID + ", " + newItemTableID); outputLog.Close(); } }
@@ -792,8 +798,8 @@ namespace DokaponKingdomRandomizer
                 for (int i = 0; i < g[4].Length; i += 2)
                 {
                     // Store Old Item ID and its Table ID.
-                    byte oldItemID = fileData[g[4].Index];
-                    byte oldItemTableID = fileData[g[4].Index + 1];
+                    byte oldItemID = fileData[g[4].Index + i];
+                    byte oldItemTableID = fileData[g[4].Index + i + 1];
 
                     // Store New Item ID and its Table ID. Use old Table ID if "Exploits" aren't enabled.
                     byte newItemTableID = oldItemTableID;
@@ -813,13 +819,13 @@ namespace DokaponKingdomRandomizer
                         }
 
                         // Write Dropped Items to File
-                        fileData[g[4].Index] = newItemID;
-                        fileData[g[4].Index + 1] = newItemTableID;
+                        fileData[g[4].Index + i] = newItemID;
+                        fileData[g[4].Index + i + 1] = newItemTableID;
                     }
 
                     // Write Drop Chances to File
-                    fileData[g[3].Index] = newChances[0];
-                    fileData[g[3].Index + 1] = newChances[1];
+                    fileData[g[3].Index + i] = newChances[0];
+                    fileData[g[3].Index + i + 1] = newChances[1];
 
                     // Write to Output Log in Detail, if enabled
                     if ((bool)settings[2])

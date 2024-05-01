@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Dokapon Kingdom Randomizer")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+83e1e15d38085b72940994c6b5709aab4c49ab88")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+640f5a50639645f1b9674a67a63528eed9831bb3")]
 [assembly: System.Reflection.AssemblyProductAttribute("Dokapon Kingdom Randomizer")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Dokapon Kingdom Randomizer")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

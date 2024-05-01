@@ -1,0 +1,15 @@
+C:\Users\Kirbo\Documents\GitHub\Dokapon-Kingdom-Randomizer\bin\Release\net7.0\Dokapon Kingdom Randomizer.exe
+C:\Users\Kirbo\Documents\GitHub\Dokapon-Kingdom-Randomizer\bin\Release\net7.0\Dokapon Kingdom Randomizer.deps.json
+C:\Users\Kirbo\Documents\GitHub\Dokapon-Kingdom-Randomizer\bin\Release\net7.0\Dokapon Kingdom Randomizer.runtimeconfig.json
+C:\Users\Kirbo\Documents\GitHub\Dokapon-Kingdom-Randomizer\bin\Release\net7.0\Dokapon Kingdom Randomizer.dll
+C:\Users\Kirbo\Documents\GitHub\Dokapon-Kingdom-Randomizer\bin\Release\net7.0\Dokapon Kingdom Randomizer.pdb
+C:\Users\Kirbo\Documents\GitHub\Dokapon-Kingdom-Randomizer\obj\Release\net7.0\Dokapon Kingdom Randomizer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Kirbo\Documents\GitHub\Dokapon-Kingdom-Randomizer\obj\Release\net7.0\Dokapon Kingdom Randomizer.AssemblyInfoInputs.cache
+C:\Users\Kirbo\Documents\GitHub\Dokapon-Kingdom-Randomizer\obj\Release\net7.0\Dokapon Kingdom Randomizer.AssemblyInfo.cs
+C:\Users\Kirbo\Documents\GitHub\Dokapon-Kingdom-Randomizer\obj\Release\net7.0\Dokapon Kingdom Randomizer.csproj.CoreCompileInputs.cache
+C:\Users\Kirbo\Documents\GitHub\Dokapon-Kingdom-Randomizer\obj\Release\net7.0\Dokapon Kingdom Randomizer.sourcelink.json
+C:\Users\Kirbo\Documents\GitHub\Dokapon-Kingdom-Randomizer\obj\Release\net7.0\Dokapon Kingdom Randomizer.dll
+C:\Users\Kirbo\Documents\GitHub\Dokapon-Kingdom-Randomizer\obj\Release\net7.0\refint\Dokapon Kingdom Randomizer.dll
+C:\Users\Kirbo\Documents\GitHub\Dokapon-Kingdom-Randomizer\obj\Release\net7.0\Dokapon Kingdom Randomizer.pdb
+C:\Users\Kirbo\Documents\GitHub\Dokapon-Kingdom-Randomizer\obj\Release\net7.0\Dokapon Kingdom Randomizer.genruntimeconfig.cache
+C:\Users\Kirbo\Documents\GitHub\Dokapon-Kingdom-Randomizer\obj\Release\net7.0\ref\Dokapon Kingdom Randomizer.dll

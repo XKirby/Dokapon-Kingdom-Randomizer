@@ -1,5 +1,4 @@
-﻿using System.Security.Cryptography;
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
 
 namespace DokaponKingdomRandomizer
 {
@@ -1163,7 +1162,7 @@ namespace DokaponKingdomRandomizer
                 spd[1] = spd[0];
                 xp[1] = xp[0];
                 gold[1] = gold[0];
-                // Are Weapon stats seriously randomized?
+                // Are Monster stats seriously randomized?
                 if ((bool)settings[1])
                 {
                     hp[1] = RNG.Next(10, 5000);
@@ -1175,7 +1174,7 @@ namespace DokaponKingdomRandomizer
                     gold[1] = RNG.Next(-15000, 15000);
                 }
 
-                // Multiply and Clamp the Weapon stats
+                // Multiply and Clamp the Monster stats
                 hp[1] = Math.Clamp((int)((float)hp[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[2]) * (float)settings[3]), 1, 9999);
                 atk[1] = Math.Clamp((int)((float)atk[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[2]) * (float)settings[3]), 1, 999);
                 def[1] = Math.Clamp((int)((float)def[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[2]) * (float)settings[3]), 1, 999);

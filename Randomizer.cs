@@ -9,7 +9,7 @@ namespace DokaponKingdomRandomizer
         // PC-based stageBase_EN.DAT offsets are on the right
 
         // Version Number
-        private static string RandomVersion = "2.0.1.0";
+        private static string RandomVersion = "2.0.1.1";
 
         // Base File
         public static string[] FileBase = new string[2] { "GAME.PAC", "stageBase_EN.DAT" };
@@ -50,7 +50,7 @@ namespace DokaponKingdomRandomizer
                   v
                 """ + RandomVersion + "\n" +
                 """
-                -------------------------------------
+                 -------------------------------------
                 
                 Wii (0) or PC (1)? Use any other value to shutdown.> 
                 """);
@@ -1159,6 +1159,8 @@ namespace DokaponKingdomRandomizer
                 int[] spd = new int[2] { fileData[g[11].Index] + (fileData[g[11].Index + 1] << 8), 0 };
                 int[] xp = new int[2] { fileData[g[13].Index] + (fileData[g[13].Index + 1] << 8), 0 };
                 int[] gold = new int[2] { fileData[g[14].Index] + (fileData[g[14].Index + 1] << 8), 0 };
+                if (monster_id >= 121)
+                { continue; }
 
                 // Make sure the default stats are set
                 hp[1] = hp[0];

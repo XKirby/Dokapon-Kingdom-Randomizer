@@ -1,5 +1,8 @@
 # DOKAPON KINGDOM RANDOMIZER
 
+## REQUIREMENTS
+.NET 7.0 Runtime: https://dotnet.microsoft.com/en-us/download/dotnet/7.0
+
 ## HOW TO USE
 
 This randomizer will work with the Wii version of Dokapon Kindom and the PC version of Dokapon Kingdom.

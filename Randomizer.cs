@@ -70,7 +70,7 @@ namespace DokaponKingdomRandomizer
                      file.> 
                     """);
                 string? pth = Console.ReadLine();
-                pth = (pth == null || pth.Length == 0) ? AppContext.BaseDirectory + "/" + FileBase[ver] : pth;
+                pth = (pth == null || pth.Length == 0) ? AppContext.BaseDirectory + FileBase[ver] : pth;
 
                 // At this point, it should check if the file exists and if it doesn't find it, close the program.
                 if (!File.Exists(pth))
@@ -656,15 +656,15 @@ namespace DokaponKingdomRandomizer
             {
                 // Weapons
                 case 1:
-                    ID = (byte)RNG.Next(0, 0x43);
+                    ID = (byte)RNG.Next(1, 0x43);
                     break;
                 //Shields
                 case 2:
-                    ID = (byte)RNG.Next(0, 0x28);
+                    ID = (byte)RNG.Next(1, 0x28);
                     break;
                 // Accessories
                 case 3:
-                    ID = (byte)RNG.Next(0, 0x21);
+                    ID = (byte)RNG.Next(1, 0x21);
                     break;
                 // Consumables
                 case 5:
@@ -674,15 +674,15 @@ namespace DokaponKingdomRandomizer
                     break;
                 // Attack Magic
                 case 6:
-                    ID = (byte)RNG.Next(0, 0x17);
+                    ID = (byte)RNG.Next(1, 0x17);
                     break;
                 // Defense Magic
                 case 7:
-                    ID = (byte)RNG.Next(0, 0x13);
+                    ID = (byte)RNG.Next(1, 0x13);
                     break;
                 // Field Magic
                 case 8:
-                    ID = (byte)RNG.Next(0, 0x26);
+                    ID = (byte)RNG.Next(1, 0x26);
                     break;
                 // Gain Money Effect
                 case 0x80:
@@ -977,7 +977,7 @@ namespace DokaponKingdomRandomizer
 
                     // If "Exploits" are enabled. Store New Item ID from here.
                     if ((bool)settings[1])
-                    { newID = (byte)RNG.Next(0, 67); }
+                    { newID = (byte)RNG.Next(1, 67); }
                     else
                     {
                         newID = normalWeaponIDs[RNG.Next(0, normalWeaponIDs.Count-1)];
@@ -999,7 +999,7 @@ namespace DokaponKingdomRandomizer
 
                     // If "Exploits" are enabled. Store New Item ID from here.
                     if ((bool)settings[1])
-                    { newID = (byte)RNG.Next(0, 40); }
+                    { newID = (byte)RNG.Next(1, 40); }
                     else
                     {
                         newID = normalShieldIDs[RNG.Next(0, normalShieldIDs.Count-1)];
@@ -1067,7 +1067,7 @@ namespace DokaponKingdomRandomizer
                 {
                     // Store Old Item ID
                     byte oldID = fileData[g[1].Index + i];
-                    byte newID = (byte)RNG.Next(0x1F, 0x30);
+                    byte newID = (byte)RNG.Next(0x38, 0x5D);
                     fileData[g[1].Index + i] = newID;
 
                     // Write to Output Log in Detail, if enabled
@@ -1081,7 +1081,7 @@ namespace DokaponKingdomRandomizer
                 {
                     // Store Old Item ID
                     byte oldID = fileData[g[2].Index + i];
-                    byte newID = newID = (byte)RNG.Next(0x38, 0x5D);
+                    byte newID = newID = (byte)RNG.Next(1, 0x17);
                     fileData[g[2].Index + i] = newID;
 
                     // Write to Output Log in Detail, if enabled
@@ -1095,7 +1095,7 @@ namespace DokaponKingdomRandomizer
                 {
                     // Store Old Item ID
                     byte oldID = fileData[g[3].Index + i];
-                    byte newID = (byte)RNG.Next(0, 0x17);
+                    byte newID = (byte)RNG.Next(0x1F, 0x30);
                     fileData[g[3].Index + i] = newID;
 
                     // Write to Output Log in Detail, if enabled

@@ -28,7 +28,7 @@ Depending on which version you have, there's different steps to take. You'll wan
 
 ## OPTIONS
 - Making a Backup (Boolean):
-	This allows you to save a backup of your GAME.PAC file whereever it's located before writing to it.
+	This allows you to save a backup of your extracted file whereever it's located before writing to it.
 
 - Randomizing Equipment (Boolean):
 	This allows you to randomize the statistics of Weapons, Shields, and Accessories.

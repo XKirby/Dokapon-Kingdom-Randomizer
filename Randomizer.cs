@@ -9,7 +9,7 @@ namespace DokaponKingdomRandomizer
         // PC-based stageBase_EN.DAT offsets are on the right
 
         // Version Number
-        private static string RandomVersion = "2.0.1.2";
+        private static string RandomVersion = "2.2";
 
         // Base File
         public static string[] FileBase = new string[2] { "GAME.PAC", "stageBase_EN.DAT" };
@@ -602,7 +602,7 @@ namespace DokaponKingdomRandomizer
                 if (randoClass)
                 {
                     outputLog.WriteLine("-- PLAYER CLASS SETTINGS --");
-                    outputLog.WriteLine("Player Class Base Stat Multiplier: " + randoClassMultiplier);
+                    outputLog.WriteLine("Player Class Stat Multiplier: " + randoClassMultiplier);
                     outputLog.WriteLine("Player Class Base Stat Variance: " + randoClassVarianceBase);
                     outputLog.WriteLine("Player Class LevelUp Stat Variance: " + randoClassVarianceLevelUp);
                     outputLog.WriteLine("Player Class Salary Variance: " + randoClassVarianceSalary);
@@ -1897,10 +1897,10 @@ namespace DokaponKingdomRandomizer
                 }
 
                 // Multiply and Clamp each stat
-                atk[1] = Math.Clamp((int)((float)atk[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f) * (float)settings[3] * (float)settings[2]), 1, 30);
-                def[1] = Math.Clamp((int)((float)def[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f) * (float)settings[3] * (float)settings[2]), 1, 30);
-                mag[1] = Math.Clamp((int)((float)mag[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f) * (float)settings[3] * (float)settings[2]), 1, 30);
-                spd[1] = Math.Clamp((int)((float)spd[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f) * (float)settings[3] * (float)settings[2]), 1, 30);
+                atk[1] = Math.Clamp((int)((float)atk[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[3]) * (float)settings[2]), 1, 30);
+                def[1] = Math.Clamp((int)((float)def[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[3]) * (float)settings[2]), 1, 30);
+                mag[1] = Math.Clamp((int)((float)mag[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[3]) * (float)settings[2]), 1, 30);
+                spd[1] = Math.Clamp((int)((float)spd[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[3]) * (float)settings[2]), 1, 30);
 
                 // Write data to file
 
@@ -1977,11 +1977,11 @@ namespace DokaponKingdomRandomizer
                 }
 
                 // Multiply and Clamp each levelup stat
-                atk[1] = Math.Clamp((int)((float)atk[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f) * (float)settings[4] * (float)settings[2]), 0, 10);
-                def[1] = Math.Clamp((int)((float)def[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f) * (float)settings[4] * (float)settings[2]), 0, 10);
-                mag[1] = Math.Clamp((int)((float)mag[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f) * (float)settings[4] * (float)settings[2]), 0, 10);
-                spd[1] = Math.Clamp((int)((float)spd[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f) * (float)settings[4] * (float)settings[2]), 0, 10);
-                hp[1] = Math.Clamp((int)((float)hp[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f) * (float)settings[4] * (float)settings[2]), 0, 10);
+                atk[1] = Math.Clamp((int)((float)atk[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[4]) * (float)settings[2]), 0, 10);
+                def[1] = Math.Clamp((int)((float)def[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[4]) * (float)settings[2]), 0, 10);
+                mag[1] = Math.Clamp((int)((float)mag[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[4]) * (float)settings[2]), 0, 10);
+                spd[1] = Math.Clamp((int)((float)spd[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[4]) * (float)settings[2]), 0, 10);
+                hp[1] = Math.Clamp((int)((float)hp[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[4]) * (float)settings[2]), 0, 10);
 
                 // Write data to file
 
@@ -2057,9 +2057,9 @@ namespace DokaponKingdomRandomizer
                 }
 
                 // Multiply and Clamp salary data
-                salary[1] = Math.Clamp((int)((float)salary[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f) * (float)settings[5] * (float)settings[2]), 10, 1500);
-                smallbonus[1] = Math.Clamp((int)((float)smallbonus[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f) * (float)settings[5] * (float)settings[2]), 50, 7500);
-                bigbonus[1] = Math.Clamp((int)((float)bigbonus[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f) * (float)settings[5] * (float)settings[2]), 100, 15000);
+                salary[1] = Math.Clamp((int)((float)salary[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[5]) * (float)settings[2]), 10, 1500);
+                smallbonus[1] = Math.Clamp((int)((float)smallbonus[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[5]) * (float)settings[2]), 50, 7500);
+                bigbonus[1] = Math.Clamp((int)((float)bigbonus[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[5]) * (float)settings[2]), 100, 15000);
 
                 // Make sure the Big Bonus is at least than double the Small Bonus
                 if( bigbonus[1] <= smallbonus[1] * 2 ) { bigbonus[1] = smallbonus[1] * 2; }
@@ -2125,8 +2125,8 @@ namespace DokaponKingdomRandomizer
                 }
 
                 // Multiply and Clamp capacities
-                itemcap[1] = Math.Clamp((int)((float)itemcap[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f) * (float)settings[6] * (float)settings[2]), 6, 12);
-                magiccap[1] = Math.Clamp((int)((float)magiccap[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f) * (float)settings[6] * (float)settings[2]), 4, 12);
+                itemcap[1] = Math.Clamp((int)((float)itemcap[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[6]) * (float)settings[2]), 6, 12);
+                magiccap[1] = Math.Clamp((int)((float)magiccap[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[6]) * (float)settings[2]), 4, 12);
 
                 // Write data to file
 

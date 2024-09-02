@@ -9,7 +9,7 @@ namespace DokaponKingdomRandomizer
         // PC-based stageBase_EN.DAT offsets are on the right
 
         // Version Number
-        private static string RandomVersion = "2.2";
+        private static string RandomVersion = "2.3";
 
         // Base File
         public static string[] FileBase = new string[2] { "GAME.PAC", "stageBase_EN.DAT" };
@@ -1150,15 +1150,15 @@ namespace DokaponKingdomRandomizer
                 if (g[0].Index >= LocStatsMonsters[version] + 0x144C) { break; }
 
                 // Pull out the values from each relevant group
-                int monster_id = fileData[g[2].Index];
+                byte monster_id = fileData[g[2].Index];
                 string name = g[5].Value;
-                int[] hp = new int[2] { fileData[g[7].Index] + (fileData[g[7].Index + 1] << 8), 0 };
-                int[] atk = new int[2] { fileData[g[8].Index] + (fileData[g[8].Index + 1] << 8), 0 };
-                int[] def = new int[2] { fileData[g[9].Index] + (fileData[g[9].Index + 1] << 8), 0 };
-                int[] mag = new int[2] { fileData[g[10].Index] + (fileData[g[10].Index + 1] << 8), 0 };
-                int[] spd = new int[2] { fileData[g[11].Index] + (fileData[g[11].Index + 1] << 8), 0 };
-                int[] xp = new int[2] { fileData[g[13].Index] + (fileData[g[13].Index + 1] << 8), 0 };
-                int[] gold = new int[2] { fileData[g[14].Index] + (fileData[g[14].Index + 1] << 8), 0 };
+                short[] hp = new short[2] { (short)(fileData[g[7].Index] + (fileData[g[7].Index + 1] << 8)), 0 };
+                short[] atk = new short[2] { (short)(fileData[g[8].Index] + (fileData[g[8].Index + 1] << 8)), 0 };
+                short[] def = new short[2] { (short)(fileData[g[9].Index] + (fileData[g[9].Index + 1] << 8)), 0 };
+                short[] mag = new short[2] { (short)(fileData[g[10].Index] + (fileData[g[10].Index + 1] << 8)), 0 };
+                short[] spd = new short[2] { (short)(fileData[g[11].Index] + (fileData[g[11].Index + 1] << 8)), 0 };
+                short[] xp = new short[2] { (short)(fileData[g[13].Index] + (fileData[g[13].Index + 1] << 8)), 0 };
+                short[] gold = new short[2] { (short)(fileData[g[14].Index] + (fileData[g[14].Index + 1] << 8)), 0 };
                 if (monster_id >= 121)
                 { continue; }
 
@@ -1173,23 +1173,23 @@ namespace DokaponKingdomRandomizer
                 // Are Monster stats seriously randomized?
                 if ((bool)settings[1])
                 {
-                    hp[1] = RNG.Next(10, 5000);
-                    atk[1] = RNG.Next(1, 500);
-                    def[1] = RNG.Next(1, 500);
-                    mag[1] = RNG.Next(1, 500);
-                    spd[1] = RNG.Next(1, 500);
-                    xp[1] = RNG.Next(1, 15000);
-                    gold[1] = RNG.Next(-15000, 15000);
+                    hp[1] = (short)RNG.Next(10, 5000);
+                    atk[1] = (short)RNG.Next(1, 500);
+                    def[1] = (short)RNG.Next(1, 500);
+                    mag[1] = (short)RNG.Next(1, 500);
+                    spd[1] = (short)RNG.Next(1, 500);
+                    xp[1] = (short)RNG.Next(1, 15000);
+                    gold[1] = (short)RNG.Next(-15000, 15000);
                 }
 
                 // Multiply and Clamp the Monster stats
-                hp[1] = Math.Clamp((int)((float)hp[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[3]) * (float)settings[2]), 1, 9999);
-                atk[1] = Math.Clamp((int)((float)atk[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[3]) * (float)settings[2]), 1, 999);
-                def[1] = Math.Clamp((int)((float)def[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[3]) * (float)settings[2]), 1, 999);
-                mag[1] = Math.Clamp((int)((float)mag[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[3]) * (float)settings[2]), 1, 999);
-                spd[1] = Math.Clamp((int)((float)spd[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[3]) * (float)settings[2]), 1, 999);
-                xp[1] = Math.Clamp((int)((float)xp[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[3]) * (float)settings[2]), 1, 30000);
-                gold[1] = Math.Clamp((int)((float)gold[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[3]) * (float)settings[2]), -30000, 30000);
+                hp[1] = (short)Math.Clamp((int)((float)hp[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[3]) * (float)settings[2]), 1, 9999);
+                atk[1] = (short)Math.Clamp((int)((float)atk[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[3]) * (float)settings[2]), 1, 999);
+                def[1] = (short)Math.Clamp((int)((float)def[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[3]) * (float)settings[2]), 1, 999);
+                mag[1] = (short)Math.Clamp((int)((float)mag[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[3]) * (float)settings[2]), 1, 999);
+                spd[1] = (short)Math.Clamp((int)((float)spd[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[3]) * (float)settings[2]), 1, 999);
+                xp[1] = (short)Math.Clamp((int)((float)xp[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[3]) * (float)settings[2]), 1, 30000);
+                gold[1] = (short)Math.Clamp((int)((float)gold[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[3]) * (float)settings[2]), -30000, 30000);
 
                 // Write data to file
 
@@ -1284,14 +1284,14 @@ namespace DokaponKingdomRandomizer
                 if (g[0].Index >= LocStatsWeapons[version] + 0xAB4) { break; }
 
                 // Pull out the values from each relevant group
-                int item_id = fileData[g[2].Index];
+                byte item_id = fileData[g[2].Index];
                 string name = g[5].Value;
                 int[] price = new int[2] { fileData[g[8].Index] + (fileData[g[8].Index + 1] << 8) + (fileData[g[8].Index + 2] << 16) + (fileData[g[8].Index + 3] << 24), 0 };
-                int[] atk = new int[2] { fileData[g[9].Index] + (fileData[g[9].Index + 1] << 8), 0 };
-                int[] def = new int[2] { fileData[g[10].Index] + (fileData[g[10].Index + 1] << 8), 0 };
-                int[] mag = new int[2] { fileData[g[11].Index] + (fileData[g[11].Index + 1] << 8), 0 };
-                int[] spd = new int[2] { fileData[g[12].Index] + (fileData[g[12].Index + 1] << 8), 0 };
-                int[] hp = new int[2] { fileData[g[13].Index] + (fileData[g[13].Index + 1] << 8), 0 };
+                short[] atk = new short[2] { (short)(fileData[g[9].Index] + (fileData[g[9].Index + 1] << 8)), 0 };
+                short[] def = new short[2] { (short)(fileData[g[10].Index] + (fileData[g[10].Index + 1] << 8)), 0 };
+                short[] mag = new short[2] { (short)(fileData[g[11].Index] + (fileData[g[11].Index + 1] << 8)), 0 };
+                short[] spd = new short[2] { (short)(fileData[g[12].Index] + (fileData[g[12].Index + 1] << 8)), 0 };
+                short[] hp = new short[2] { (short)(fileData[g[13].Index] + (fileData[g[13].Index + 1] << 8)), 0 };
 
                 // Make sure the default price is set
                 price[1] = price[0];
@@ -1317,19 +1317,19 @@ namespace DokaponKingdomRandomizer
                 // Are Weapon stats seriously randomized?
                 if ((bool)settings[5])
                 {
-                    atk[1] = RNG.Next(1, 100);
-                    def[1] = RNG.Next(-100, 100);
-                    mag[1] = RNG.Next(-100, 100);
-                    spd[1] = RNG.Next(-100, 100);
-                    hp[1] = RNG.Next(0, 100);
+                    atk[1] = (short)RNG.Next(1, 100);
+                    def[1] = (short)RNG.Next(-100, 100);
+                    mag[1] = (short)RNG.Next(-100, 100);
+                    spd[1] = (short)RNG.Next(-100, 100);
+                    hp[1] = (short)RNG.Next(0, 100);
                 }
 
                 // Multiply and Clamp the Weapon stats
-                atk[1] = Math.Clamp((int)((float)atk[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[7]) * (float)settings[6]), 1, 333);
-                def[1] = Math.Clamp((int)((float)def[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[7]) * (float)settings[6]), -333, 333);
-                mag[1] = Math.Clamp((int)((float)mag[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[7]) * (float)settings[6]), -333, 333);
-                spd[1] = Math.Clamp((int)((float)spd[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[7]) * (float)settings[6]), -333, 333);
-                hp[1] = Math.Clamp((int)((float)hp[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[7]) * (float)settings[6]), 0, 333);
+                atk[1] = (short)Math.Clamp((int)((float)atk[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[7]) * (float)settings[6]), 1, 333);
+                def[1] = (short)Math.Clamp((int)((float)def[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[7]) * (float)settings[6]), -333, 333);
+                mag[1] = (short)Math.Clamp((int)((float)mag[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[7]) * (float)settings[6]), -333, 333);
+                spd[1] = (short)Math.Clamp((int)((float)spd[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[7]) * (float)settings[6]), -333, 333);
+                hp[1] = (short)Math.Clamp((int)((float)hp[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[7]) * (float)settings[6]), 0, 333);
 
                 // Write data to file
 
@@ -1392,14 +1392,14 @@ namespace DokaponKingdomRandomizer
                 if (g[0].Index >= LocStatsShields[version] + 0x6AC) { break; }
 
                 // Pull out the values from each relevant group
-                int item_id = fileData[g[2].Index];
+                byte item_id = fileData[g[2].Index];
                 string name = g[6].Value.Length > 0 ? g[6].Value : g[7].Value;
                 int[] price = new int[2] { fileData[g[10].Index] + (fileData[g[10].Index + 1] << 8) + (fileData[g[10].Index + 2] << 16) + (fileData[g[10].Index + 3] << 24), 0 };
-                int[] atk = new int[2] { fileData[g[12].Index] + (fileData[g[12].Index + 1] << 8), 0 };
-                int[] def = new int[2] { fileData[g[11].Index] + (fileData[g[11].Index + 1] << 8), 0 };
-                int[] mag = new int[2] { fileData[g[13].Index] + (fileData[g[13].Index + 1] << 8), 0 };
-                int[] spd = new int[2] { fileData[g[14].Index] + (fileData[g[14].Index + 1] << 8), 0 };
-                int[] hp = new int[2] { fileData[g[15].Index] + (fileData[g[15].Index + 1] << 8), 0 };
+                short[] atk = new short[2] { (short)(fileData[g[12].Index] + (fileData[g[12].Index + 1] << 8)), 0 };
+                short[] def = new short[2] { (short)(fileData[g[11].Index] + (fileData[g[11].Index + 1] << 8)), 0 };
+                short[] mag = new short[2] { (short)(fileData[g[13].Index] + (fileData[g[13].Index + 1] << 8)), 0 };
+                short[] spd = new short[2] { (short)(fileData[g[14].Index] + (fileData[g[14].Index + 1] << 8)), 0 };
+                short[] hp = new short[2] { (short)(fileData[g[15].Index] + (fileData[g[15].Index + 1] << 8)), 0 };
 
                 // Make sure the default price is set
                 price[1] = price[0];
@@ -1425,19 +1425,19 @@ namespace DokaponKingdomRandomizer
                 // Are Shield stats seriously randomized?
                 if ((bool)settings[5])
                 {
-                    atk[1] = RNG.Next(-100, 100);
-                    def[1] = RNG.Next(1, 100);
-                    mag[1] = RNG.Next(-100, 100);
-                    spd[1] = RNG.Next(-100, 100);
-                    hp[1] = RNG.Next(0, 100);
+                    atk[1] = (short)RNG.Next(-100, 100);
+                    def[1] = (short)RNG.Next(1, 100);
+                    mag[1] = (short)RNG.Next(-100, 100);
+                    spd[1] = (short)RNG.Next(-100, 100);
+                    hp[1] = (short)RNG.Next(0, 100);
                 }
 
                 // Multiply and Clamp the Shield stats
-                atk[1] = Math.Clamp((int)((float)atk[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[8]) * (float)settings[6]), -333, 333);
-                def[1] = Math.Clamp((int)((float)def[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[8]) * (float)settings[6]), 1, 333);
-                mag[1] = Math.Clamp((int)((float)mag[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[8]) * (float)settings[6]), -333, 333);
-                spd[1] = Math.Clamp((int)((float)spd[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[8]) * (float)settings[6]), -333, 333);
-                hp[1] = Math.Clamp((int)((float)hp[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[8]) * (float)settings[6]), 0, 333);
+                atk[1] = (short)Math.Clamp((int)((float)atk[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[8]) * (float)settings[6]), -333, 333);
+                def[1] = (short)Math.Clamp((int)((float)def[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[8]) * (float)settings[6]), 1, 333);
+                mag[1] = (short)Math.Clamp((int)((float)mag[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[8]) * (float)settings[6]), -333, 333);
+                spd[1] = (short)Math.Clamp((int)((float)spd[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[8]) * (float)settings[6]), -333, 333);
+                hp[1] = (short)Math.Clamp((int)((float)hp[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[8]) * (float)settings[6]), 0, 333);
 
                 // Write data to file
 
@@ -1500,14 +1500,14 @@ namespace DokaponKingdomRandomizer
                 if (g[0].Index >= LocStatsAccessories[version] + 0x61A) { break; }
 
                 // Pull out the values from each relevant group
-                int item_id = fileData[g[2].Index];
+                byte item_id = fileData[g[2].Index];
                 string name = g[5].Value;
                 int[] price = new int[2] { fileData[g[8].Index] + (fileData[g[8].Index + 1] << 8) + (fileData[g[8].Index + 2] << 16) + (fileData[g[8].Index + 3] << 24), 0 };
-                int[] atk = new int[2] { fileData[g[9].Index] + (fileData[g[9].Index + 1] << 8), 0 };
-                int[] def = new int[2] { fileData[g[10].Index] + (fileData[g[10].Index + 1] << 8), 0 };
-                int[] mag = new int[2] { fileData[g[11].Index] + (fileData[g[11].Index + 1] << 8), 0 };
-                int[] spd = new int[2] { fileData[g[12].Index] + (fileData[g[12].Index + 1] << 8), 0 };
-                int[] hp = new int[2] { fileData[g[13].Index] + (fileData[g[13].Index + 1] << 8), 0 };
+                short[] atk = new short[2] { (short)(fileData[g[9].Index] + (fileData[g[9].Index + 1] << 8)), 0 };
+                short[] def = new short[2] { (short)(fileData[g[10].Index] + (fileData[g[10].Index + 1] << 8)), 0 };
+                short[] mag = new short[2] { (short)(fileData[g[11].Index] + (fileData[g[11].Index + 1] << 8)), 0 };
+                short[] spd = new short[2] { (short)(fileData[g[12].Index] + (fileData[g[12].Index + 1] << 8)), 0 };
+                short[] hp = new short[2] { (short)(fileData[g[13].Index] + (fileData[g[13].Index + 1] << 8)), 0 };
 
                 // Make sure the default price is set
                 price[1] = price[0];
@@ -1533,19 +1533,19 @@ namespace DokaponKingdomRandomizer
                 // Are Weapon stats seriously randomized?
                 if ((bool)settings[5])
                 {
-                    atk[1] = RNG.Next(-100, 100);
-                    def[1] = RNG.Next(-100, 100);
-                    mag[1] = RNG.Next(-100, 100);
-                    spd[1] = RNG.Next(-100, 100);
-                    hp[1] = RNG.Next(0, 100);
+                    atk[1] = (short)RNG.Next(-100, 100);
+                    def[1] = (short)RNG.Next(-100, 100);
+                    mag[1] = (short)RNG.Next(-100, 100);
+                    spd[1] = (short)RNG.Next(-100, 100);
+                    hp[1] = (short)RNG.Next(0, 100);
                 }
 
                 // Multiply and Clamp the Weapon stats
-                atk[1] = Math.Clamp((int)((float)atk[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[9]) * (float)settings[6]), -333, 333);
-                def[1] = Math.Clamp((int)((float)def[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[9]) * (float)settings[6]), -333, 333);
-                mag[1] = Math.Clamp((int)((float)mag[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[9]) * (float)settings[6]), -333, 333);
-                spd[1] = Math.Clamp((int)((float)spd[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[9]) * (float)settings[6]), -333, 333);
-                hp[1] = Math.Clamp((int)((float)hp[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[9]) * (float)settings[6]), 0, 333);
+                atk[1] = (short)Math.Clamp((int)((float)atk[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[9]) * (float)settings[6]), -333, 333);
+                def[1] = (short)Math.Clamp((int)((float)def[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[9]) * (float)settings[6]), -333, 333);
+                mag[1] = (short)Math.Clamp((int)((float)mag[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[9]) * (float)settings[6]), -333, 333);
+                spd[1] = (short)Math.Clamp((int)((float)spd[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[9]) * (float)settings[6]), -333, 333);
+                hp[1] = (short)Math.Clamp((int)((float)hp[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[9]) * (float)settings[6]), 0, 333);
 
                 // Write data to file
 
@@ -1641,10 +1641,10 @@ namespace DokaponKingdomRandomizer
                 if (g[0].Index >= LocStatsMagicOffense[version] + 0x2A4) { break; }
 
                 // Pull out the values from each relevant group
-                int item_id = fileData[g[2].Index];
+                byte item_id = fileData[g[2].Index];
                 string name = g[5].Value;
                 int[] price = new int[2] { fileData[g[7].Index] + (fileData[g[7].Index + 1] << 8) + (fileData[g[7].Index + 2] << 16) + (fileData[g[7].Index + 3] << 24), 0 };
-                int[] potency = new int[2] { fileData[g[8].Index] + (fileData[g[8].Index + 1] << 8), 0 };
+                short[] potency = new short[2] { (short)(fileData[g[8].Index] + (fileData[g[8].Index + 1] << 8)), 0 };
 
                 // Make sure the default price is set
                 price[1] = price[0];
@@ -1664,10 +1664,10 @@ namespace DokaponKingdomRandomizer
                 // Make sure the default stats are set
                 potency[1] = potency[0];
                 // Is Magic potency seriously randomized?
-                if ((bool)settings[5]) potency[1] = RNG.Next(10, 300);
+                if ((bool)settings[5]) potency[1] = (short)RNG.Next(10, 300);
 
                 // Multiply and Clamp the Potency
-                potency[1] = Math.Clamp((int)((float)potency[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[7]) * (float)settings[6]), 10, 600);
+                potency[1] = (short)Math.Clamp((int)((float)potency[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[7]) * (float)settings[6]), 10, 600);
 
                 // Write data to file
 
@@ -1709,10 +1709,10 @@ namespace DokaponKingdomRandomizer
                 if (g[0].Index >= LocStatsMagicDefense[version] + 0x250) { break; }
 
                 // Pull out the values from each relevant group
-                int item_id = fileData[g[2].Index];
+                byte item_id = fileData[g[2].Index];
                 string name = g[5].Value;
                 int[] price = new int[2] { fileData[g[7].Index] + (fileData[g[7].Index + 1] << 8) + (fileData[g[7].Index + 2] << 16) + (fileData[g[7].Index + 3] << 24), 0 };
-                int[] potency = new int[2] { fileData[g[8].Index] + (fileData[g[8].Index + 1] << 8), 0 };
+                short[] potency = new short[2] { (short)(fileData[g[8].Index] + (fileData[g[8].Index + 1] << 8)), 0 };
 
                 // Make sure the default price is set
                 price[1] = price[0];
@@ -1732,10 +1732,10 @@ namespace DokaponKingdomRandomizer
                 // Make sure the default stats are set
                 potency[1] = potency[0];
                 // Is Magic potency seriously randomized?
-                if ((bool)settings[5]) potency[1] = RNG.Next(5, 50);
+                if ((bool)settings[5]) potency[1] = (short)RNG.Next(5, 50);
 
                 // Multiply and Clamp the Potency
-                potency[1] = Math.Clamp((int)((float)potency[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[8]) * (float)settings[6]), 5, 90);
+                potency[1] = (short)Math.Clamp((int)((float)potency[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[8]) * (float)settings[6]), 5, 90);
 
                 // Write data to file
 
@@ -1775,10 +1775,10 @@ namespace DokaponKingdomRandomizer
                 if (g[0].Index >= LocStatsMagicField[version] + 0x480) { break; }
 
                 // Pull out the values from each relevant group
-                int item_id = fileData[g[2].Index];
+                byte item_id = fileData[g[2].Index];
                 string name = g[5].Value;
                 int[] price = new int[2] { fileData[g[7].Index] + (fileData[g[7].Index + 1] << 8) + (fileData[g[7].Index + 2] << 16) + (fileData[g[7].Index + 3] << 24), 0 };
-                int[] potency = new int[2] { fileData[g[8].Index] + (fileData[g[8].Index + 1] << 8), 0 };
+                short[] potency = new short[2] { (short)(fileData[g[8].Index] + (fileData[g[8].Index + 1] << 8)), 0 };
 
                 // Make sure the default price is set
                 price[1] = price[0];
@@ -1798,10 +1798,10 @@ namespace DokaponKingdomRandomizer
                 // Make sure the default stats are set
                 potency[1] = potency[0];
                 // Is Magic potency seriously randomized?
-                if ((bool)settings[5]) potency[1] = RNG.Next(10, 200);
+                if ((bool)settings[5]) potency[1] = (short)RNG.Next(10, 200);
 
                 // Multiply and Clamp the Potency
-                potency[1] = Math.Clamp((int)((float)potency[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[9]) * (float)settings[6]), 10, 400);
+                potency[1] = (short)Math.Clamp((int)((float)potency[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[9]) * (float)settings[6]), 10, 400);
 
                 // Write data to file
 
@@ -1874,12 +1874,12 @@ namespace DokaponKingdomRandomizer
                 if (g[0].Index >= LocStatsClassesBase[version] + 0x160) { break; }
 
                 // Pull out the values from each relevant group
-                int type = fileData[g[2].Index];
-                int gender = fileData[g[3].Index];
-                int[] atk = new int[2] { fileData[g[4].Index] + (fileData[g[4].Index + 1] << 8), 0 };
-                int[] def = new int[2] { fileData[g[5].Index] + (fileData[g[5].Index + 1] << 8), 0 };
-                int[] mag = new int[2] { fileData[g[6].Index] + (fileData[g[6].Index + 1] << 8), 0 };
-                int[] spd = new int[2] { fileData[g[7].Index] + (fileData[g[7].Index + 1] << 8), 0 };
+                byte type = fileData[g[2].Index];
+                byte gender = fileData[g[3].Index];
+                short[] atk = new short[2] { (short)(fileData[g[4].Index] + (fileData[g[4].Index + 1] << 8)), 0 };
+                short[] def = new short[2] { (short)(fileData[g[5].Index] + (fileData[g[5].Index + 1] << 8)), 0 };
+                short[] mag = new short[2] { (short)(fileData[g[6].Index] + (fileData[g[6].Index + 1] << 8)), 0 };
+                short[] spd = new short[2] { (short)(fileData[g[7].Index] + (fileData[g[7].Index + 1] << 8)), 0 };
 
                 // Make sure the default stats are set
                 atk[1] = atk[0];
@@ -1890,17 +1890,17 @@ namespace DokaponKingdomRandomizer
                 // Are Player Class stats seriously randomized?
                 if ((bool)settings[1])
                 {
-                    atk[1] = RNG.Next(1, 15);
-                    def[1] = RNG.Next(1, 15);
-                    mag[1] = RNG.Next(1, 15);
-                    spd[1] = RNG.Next(1, 15);
+                    atk[1] = (short)RNG.Next(1, 15);
+                    def[1] = (short)RNG.Next(1, 15);
+                    mag[1] = (short)RNG.Next(1, 15);
+                    spd[1] = (short)RNG.Next(1, 15);
                 }
 
                 // Multiply and Clamp each stat
-                atk[1] = Math.Clamp((int)((float)atk[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[3]) * (float)settings[2]), 1, 30);
-                def[1] = Math.Clamp((int)((float)def[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[3]) * (float)settings[2]), 1, 30);
-                mag[1] = Math.Clamp((int)((float)mag[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[3]) * (float)settings[2]), 1, 30);
-                spd[1] = Math.Clamp((int)((float)spd[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[3]) * (float)settings[2]), 1, 30);
+                atk[1] = (short)Math.Clamp((int)((float)atk[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[3]) * (float)settings[2]), 1, 30);
+                def[1] = (short)Math.Clamp((int)((float)def[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[3]) * (float)settings[2]), 1, 30);
+                mag[1] = (short)Math.Clamp((int)((float)mag[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[3]) * (float)settings[2]), 1, 30);
+                spd[1] = (short)Math.Clamp((int)((float)spd[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[3]) * (float)settings[2]), 1, 30);
 
                 // Write data to file
 
@@ -1951,13 +1951,13 @@ namespace DokaponKingdomRandomizer
                 if (g[0].Index >= LocStatsClassesLevelups[version] + 0x2A0) { break; }
 
                 // Pull out the values from each relevant group
-                int type = fileData[g[2].Index];
-                int gender = fileData[g[3].Index];
-                int[] atk = new int[2] { fileData[g[4].Index] + (fileData[g[4].Index + 1] << 8), 0 };
-                int[] def = new int[2] { fileData[g[5].Index] + (fileData[g[5].Index + 1] << 8), 0 };
-                int[] mag = new int[2] { fileData[g[6].Index] + (fileData[g[6].Index + 1] << 8), 0 };
-                int[] spd = new int[2] { fileData[g[7].Index] + (fileData[g[7].Index + 1] << 8), 0 };
-                int[] hp = new int[2] { fileData[g[8].Index] + (fileData[g[8].Index + 1] << 8), 0 };
+                byte type = fileData[g[2].Index];
+                byte gender = fileData[g[3].Index];
+                short[] atk = new short[2] { (short)(fileData[g[4].Index] + (fileData[g[4].Index + 1] << 8)), 0 };
+                short[] def = new short[2] { (short)(fileData[g[5].Index] + (fileData[g[5].Index + 1] << 8)), 0 };
+                short[] mag = new short[2] { (short)(fileData[g[6].Index] + (fileData[g[6].Index + 1] << 8)), 0 };
+                short[] spd = new short[2] { (short)(fileData[g[7].Index] + (fileData[g[7].Index + 1] << 8)), 0 };
+                short[] hp = new short[2] { (short)(fileData[g[8].Index] + (fileData[g[8].Index + 1] << 8)), 0 };
 
                 // Make sure the default levelup stats are set
                 atk[1] = atk[0];
@@ -1969,19 +1969,19 @@ namespace DokaponKingdomRandomizer
                 // Are Player Class Levelup stats seriously randomized?
                 if ((bool)settings[1])
                 {
-                    atk[1] = RNG.Next(0, 5);
-                    def[1] = RNG.Next(0, 5);
-                    mag[1] = RNG.Next(0, 5);
-                    spd[1] = RNG.Next(0, 5);
-                    hp[1] = RNG.Next(0, 5);
+                    atk[1] = (short)RNG.Next(0, 5);
+                    def[1] = (short)RNG.Next(0, 5);
+                    mag[1] = (short)RNG.Next(0, 5);
+                    spd[1] = (short)RNG.Next(0, 5);
+                    hp[1] = (short)RNG.Next(0, 5);
                 }
 
                 // Multiply and Clamp each levelup stat
-                atk[1] = Math.Clamp((int)((float)atk[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[4]) * (float)settings[2]), 0, 10);
-                def[1] = Math.Clamp((int)((float)def[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[4]) * (float)settings[2]), 0, 10);
-                mag[1] = Math.Clamp((int)((float)mag[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[4]) * (float)settings[2]), 0, 10);
-                spd[1] = Math.Clamp((int)((float)spd[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[4]) * (float)settings[2]), 0, 10);
-                hp[1] = Math.Clamp((int)((float)hp[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[4]) * (float)settings[2]), 0, 10);
+                atk[1] = (short)Math.Clamp((int)((float)atk[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[4]) * (float)settings[2]), 0, 10);
+                def[1] = (short)Math.Clamp((int)((float)def[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[4]) * (float)settings[2]), 0, 10);
+                mag[1] = (short)Math.Clamp((int)((float)mag[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[4]) * (float)settings[2]), 0, 10);
+                spd[1] = (short)Math.Clamp((int)((float)spd[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[4]) * (float)settings[2]), 0, 10);
+                hp[1] = (short)Math.Clamp((int)((float)hp[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[4]) * (float)settings[2]), 0, 10);
 
                 // Write data to file
 
@@ -2037,11 +2037,11 @@ namespace DokaponKingdomRandomizer
                 if (g[0].Index >= LocStatsClassesSalary[version] + 0x160) { break; }
 
                 // Pull out the values from each relevant group
-                int type = fileData[g[2].Index];
-                int gender = fileData[g[3].Index];
-                int[] salary = new int[2] { fileData[g[5].Index] + (fileData[g[5].Index + 1] << 8), 0 };
-                int[] smallbonus = new int[2] { fileData[g[6].Index] + (fileData[g[6].Index + 1] << 8), 0 };
-                int[] bigbonus = new int[2] { fileData[g[7].Index] + (fileData[g[7].Index + 1] << 8), 0 };
+                byte type = fileData[g[2].Index];
+                byte gender = fileData[g[3].Index];
+                short[] salary = new short[2] { (short)(fileData[g[5].Index] + (fileData[g[5].Index + 1] << 8)), 0 };
+                short[] smallbonus = new short[2] { (short)(fileData[g[6].Index] + (fileData[g[6].Index + 1] << 8)), 0 };
+                short[] bigbonus = new short[2] { (short)(fileData[g[7].Index] + (fileData[g[7].Index + 1] << 8)), 0 };
 
                 // Make sure the default salary data is set
                 salary[1] = salary[0];
@@ -2051,18 +2051,18 @@ namespace DokaponKingdomRandomizer
                 // Are Player Class Salaries seriously randomized?
                 if ((bool)settings[1])
                 {
-                    salary[1] = RNG.Next(1, 50) * 10;
-                    smallbonus[1] = RNG.Next(5, 250) * 10;
-                    bigbonus[1] = RNG.Next(10, 500) * 10;
+                    salary[1] = (short)(RNG.Next(1, 50) * 10);
+                    smallbonus[1] = (short)(RNG.Next(5, 250) * 10);
+                    bigbonus[1] = (short)(RNG.Next(10, 500) * 10);
                 }
 
                 // Multiply and Clamp salary data
-                salary[1] = Math.Clamp((int)((float)salary[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[5]) * (float)settings[2]), 10, 1500);
-                smallbonus[1] = Math.Clamp((int)((float)smallbonus[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[5]) * (float)settings[2]), 50, 7500);
-                bigbonus[1] = Math.Clamp((int)((float)bigbonus[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[5]) * (float)settings[2]), 100, 15000);
+                salary[1] = (short)Math.Clamp((int)((float)salary[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[5]) * (float)settings[2]), 10, 1500);
+                smallbonus[1] = (short)Math.Clamp((int)((float)smallbonus[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[5]) * (float)settings[2]), 50, 7500);
+                bigbonus[1] = (short)Math.Clamp((int)((float)bigbonus[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[5]) * (float)settings[2]), 100, 15000);
 
                 // Make sure the Big Bonus is at least than double the Small Bonus
-                if( bigbonus[1] <= smallbonus[1] * 2 ) { bigbonus[1] = smallbonus[1] * 2; }
+                if( bigbonus[1] <= smallbonus[1] * 2 ) { bigbonus[1] = (short)(smallbonus[1] * 2); }
 
                 // Write data to file
 
@@ -2108,10 +2108,10 @@ namespace DokaponKingdomRandomizer
                 if (g[0].Index >= LocStatsClassesCapacity[version] + 0xB0) { break; }
 
                 // Pull out the values from each relevant group
-                int type = fileData[g[2].Index];
-                int gender = fileData[g[3].Index];
-                int[] itemcap = new int[2] { fileData[g[4].Index], 0 };
-                int[] magiccap = new int[2] { fileData[g[5].Index], 0 };
+                byte type = fileData[g[2].Index];
+                byte gender = fileData[g[3].Index];
+                short[] itemcap = new short[2] { (short)fileData[g[4].Index], 0 };
+                short[] magiccap = new short[2] { (short)fileData[g[5].Index], 0 };
 
                 // Make sure the default capacities are set
                 itemcap[1] = itemcap[0];
@@ -2120,13 +2120,13 @@ namespace DokaponKingdomRandomizer
                 // Are Player Class Inventory Capacities seriously randomized?
                 if ((bool)settings[1])
                 {
-                    itemcap[1] = RNG.Next(3, 6) * 2;
-                    magiccap[1] = RNG.Next(2, 6) * 2;
+                    itemcap[1] = (short)(RNG.Next(3, 6) * 2);
+                    magiccap[1] = (short)(RNG.Next(2, 6) * 2);
                 }
 
                 // Multiply and Clamp capacities
-                itemcap[1] = Math.Clamp((int)((float)itemcap[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[6]) * (float)settings[2]), 6, 12);
-                magiccap[1] = Math.Clamp((int)((float)magiccap[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[6]) * (float)settings[2]), 4, 12);
+                itemcap[1] = (short)Math.Clamp((int)((float)itemcap[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[6]) * (float)settings[2]), 6, 12);
+                magiccap[1] = (short)Math.Clamp((int)((float)magiccap[1] * (1.0f + (float)RNG.Next(-100, 100) / 100.0f * (float)settings[6]) * (float)settings[2]), 4, 12);
 
                 // Write data to file
 

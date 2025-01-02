@@ -5,7 +5,7 @@
 
 ## HOW TO USE
 
-This randomizer will work with the Wii version of Dokapon Kindom and the PC version of Dokapon Kingdom.
+This randomizer will work with the Wii version of Dokapon Kindom and the PC (Steam) version of Dokapon Kingdom.
 Depending on which version you have, there's different steps to take. You'll want to have a zip archive extracter at the ready. I recommend 7zip.
 
 ### For the Wii version:
@@ -17,14 +17,14 @@ Depending on which version you have, there's different steps to take. You'll wan
 6) Once you're done, place the altered "GAME.PAC" back where the original one was with the rest of your Dokapon Kingdom's extracted game files.
 7) Search your Dokapon Kingdom's extracted game files for "main.dol". Run that file in Dolphin instead of your dumped copy.
 
-### For the PC version:
+### For the PC (Steam) version:
 1) Obtain a copy of Dokapon Kingdom Connect from Steam. I'm unsure of other potential storefronts that may have it.
 2) Download "Connect Mod Installer" and "Yet Another CPK Tool". Both can be found on Github and through some potential google searching. Read their instructions to learn how they work.
 3) Drag and drop "Data_eng.cpk" onto "Yet Another CPK Tool" to extract its data.
 4) After extraction, search the newly created folders for "stageBase_EN.dat" and copy it to where your copy of the Randomizer is located.
 5) Run the randomizer. When prompted, make a backup, just in case. Follow the remainder of the steps to fill out what options you want.
-6) Once you're done, move the altered "stageBase_EN.dat" into its own folder, then move that folder to where "Connect Mod Installer" is located.
-7) Drag and drop the folder with "stageBase_EN.dat" in it onto "Connect Mod Installer" to install it.
+6) Once you're done, move the altered "stageBase_EN.dat" into an "Assets" folder inside another folder with a name of your choice, then move that folder to inside of the "Connect Mod Installer" Mods folder.
+7) Run "Connect Mod Installer" and point it to your Dokapon Kingdom Connect executable.
 
 ## OPTIONS
 - Making a Backup (Boolean):

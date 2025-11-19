@@ -1,4 +1,5 @@
 # DOKAPON KINGDOM RANDOMIZER
+Version 3.0
 
 ## REQUIREMENTS
 .NET 7.0 Runtime: https://dotnet.microsoft.com/en-us/download/dotnet/7.0
@@ -91,6 +92,11 @@ Depending on which version you have, there's different steps to take. You'll wan
 - Allow Exploits (Boolean):
 	This allows some exploitable Items to be put into Shops and ignores Loot Space Types in regards to Loot Space Drop Table Randomization.
 	- NOT RECOMMENDED for seriously play. If you're playing casually, feel free to abuse it.
+
+- Randomize Prank Names (Boolean, PC Only):
+	This allows you to replace the Prank Names selected when pranking after PvP fights. They're chosen at-random from a list of names.
+	NOTE: Please do not distribute Prank Name files with derogatory or inappropriate names. Additionally, please use Steam Remote Play or Parsec, as I have no idea how this works with Online saves.
+	- The "pranknames.txt" file must remain where it is. Feel free to edit it with names. Each Prank Name can be as long as 15 characters. Anything longer will be skipped.
 	
 - Randomized Run Seed (String):
 	The seed for the run. Optional. Will generate based on time if you don't supply one.

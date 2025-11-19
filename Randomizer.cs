@@ -9,33 +9,35 @@ namespace DokaponKingdomRandomizer
         // PC-based stageBase_EN.DAT offsets are on the right
 
         // Version Number
-        private static string RandomVersion = "2.4";
+        private static string RandomVersion = "3.0";
 
         // Base File
         public static string[] FileBase = new string[2] { "GAME.PAC", "stageBase_EN.DAT" };
 
         // Shop Items
-        public static int[] LocShopEquipment = new int[2] { 0x0B1C9844, 0x5040 };
-        public static int[] LocShopConsumables = new int[2] { 0x0B1C98F0, 0x50EC };
-        public static int[] LocShopMagic = new int[2] { 0x0B1C9994, 0x5190 };
+        public static int[] LocShopEquipment = new int[2] { 0x0B1C9844, 0x5054 };
+        public static int[] LocShopConsumables = new int[2] { 0x0B1C98F0, 0x5100 };
+        public static int[] LocShopMagic = new int[2] { 0x0B1C9994, 0x51A4 };
         // Drop Items
-        public static int[] LocDropsMonsters = new int[2] { 0x0B1E0CD8, 0x01C474 };
-        public static int[] LocDropsSpaces = new int[2] { 0x0B1C84CC, 0x3CC8 };
+        public static int[] LocDropsMonsters = new int[2] { 0x0B1E0CD8, 0x01C500 };
+        public static int[] LocDropsSpaces = new int[2] { 0x0B1C84CC, 0x3CDC };
         // Item Stats
-        public static int[] LocStatsWeapons = new int[2] { 0x0B1CCC08, 0x83A8 };
-        public static int[] LocStatsShields = new int[2] { 0x0B1CF380, 0xAB20 };
-        public static int[] LocStatsAccessories = new int[2] { 0x0B1D2780, 0xBD80 };
-        public static int[] LocStatsConsumables = new int[2] { 0x0B1D3020, 0xDF44 };
-        public static int[] LocStatsGifts = new int[2] { 0x0B1D3020, 0xE7E0 };
-        public static int[] LocStatsMagicOffense = new int[2] { 0x0B1D945C, 0x014C04 };
-        public static int[] LocStatsMagicDefense = new int[2] { 0x0B1D970C, 0x014EB4 };
-        public static int[] LocStatsMagicField = new int[2] { 0x0B1D9964, 0x01510C };
+        public static int[] LocStatsWeapons = new int[2] { 0x0B1CCC08, 0x83CC };
+        public static int[] LocStatsShields = new int[2] { 0x0B1CF380, 0xAB48 };
+        public static int[] LocStatsAccessories = new int[2] { 0x0B1D2780, 0xBDAC };
+        public static int[] LocStatsConsumables = new int[2] { 0x0B1D3020, 0xDF7C };
+        public static int[] LocStatsGifts = new int[2] { 0x0B1D3020, 0xE760 };
+        public static int[] LocStatsMagicOffense = new int[2] { 0x0B1D945C, 0x014C4C };
+        public static int[] LocStatsMagicDefense = new int[2] { 0x0B1D970C, 0x014EFC };
+        public static int[] LocStatsMagicField = new int[2] { 0x0B1D9964, 0x015150 };
         // Unit Stats
-        public static int[] LocStatsClassesBase = new int[2] { 0x0B1DCCAC, 0x018448 };
-        public static int[] LocStatsClassesLevelups = new int[2] { 0x0B1DCE0C, 0x0185A8 };
-        public static int[] LocStatsClassesSalary = new int[2] { 0x0B1DD20C, 0x0189A8 };
-        public static int[] LocStatsClassesCapacity = new int[2] { 0x0B1DD0AC, 0x18848 };
-        public static int[] LocStatsMonsters = new int[2] { 0x0B1DF888, 0x01B024 };
+        public static int[] LocStatsClassesBase = new int[2] { 0x0B1DCCAC, 0x0184A8 };
+        public static int[] LocStatsClassesLevelups = new int[2] { 0x0B1DCE0C, 0x018608 };
+        public static int[] LocStatsClassesSalary = new int[2] { 0x0B1DD20C, 0x018A08 };
+        public static int[] LocStatsClassesCapacity = new int[2] { 0x0B1DD0AC, 0x188A8 };
+        public static int[] LocStatsMonsters = new int[2] { 0x0B1DF888, 0x01B0B0 };
+        // Prank Names
+        public static int[] LocPrankNames = new int[2] { -1, 0x04B73C };
 
         // Main program loop
         static void Main()
@@ -159,6 +161,7 @@ namespace DokaponKingdomRandomizer
             bool randoDrops = false;
             bool randoDropsSerious = false;
             bool randoExploits = false;
+            bool randoPrankNames = false;
             bool randoOutputLog = false;
             int randoSeed = 0;
 
@@ -525,12 +528,25 @@ namespace DokaponKingdomRandomizer
             // Allow Exploitable Items Toggle
             Console.WriteLine("""
                 
-                Allow Exploitable Items? [true or false]> 
+                Allow Exploitabls? [true or false]> 
                 """);
             inp = Console.ReadLine();
             inptest = bool.TryParse(inp, out bool ot6);
             if (inp == null || !inptest) ot6 = false;
             randoExploits = ot6;
+
+            // Allow Prank Names Toggle (PC Only)
+            if(version == 1)
+            {
+                Console.WriteLine("""
+                
+                Randomize Prank Names? [true or false]> 
+                """);
+                inp = Console.ReadLine();
+                inptest = bool.TryParse(inp, out bool ot7);
+                if (inp == null || !inptest) ot7 = false;
+                randoPrankNames = ot7;
+            }
 
             // Type in a number for the randomization seed
             Console.WriteLine("""
@@ -538,9 +554,9 @@ namespace DokaponKingdomRandomizer
                 Input a seed [0 - 999999999]> 
                 """);
             inp = Console.ReadLine();
-            inptest = int.TryParse(inp, out int ot7);
-            if (inp == null || !inptest) ot7 = Math.Clamp(new Random(DateTime.MaxValue.Second).Next(0, 999999999), 0, 999999999);
-            randoSeed = Math.Clamp(ot7, 0, 999999999);
+            inptest = int.TryParse(inp, out int ot8);
+            if (inp == null || !inptest) ot8 = Math.Clamp(new Random(DateTime.MaxValue.Second).Next(0, 999999999), 0, 999999999);
+            randoSeed = Math.Clamp(ot8, 0, 999999999);
 
             // Write Detailed Output Log Toggle
             Console.WriteLine("""
@@ -548,9 +564,9 @@ namespace DokaponKingdomRandomizer
                 Write Detailed Output Log? [true or false]> 
                 """);
             inp = Console.ReadLine();
-            inptest = bool.TryParse(inp, out bool ot8);
-            if (inp == null || !inptest) ot8 = false;
-            randoOutputLog = ot8;
+            inptest = bool.TryParse(inp, out bool ot9);
+            if (inp == null || !inptest) ot9 = false;
+            randoOutputLog = ot9;
 
             // Write basic Output Log information
             Console.WriteLine("Writing basic Output Log information...");
@@ -568,6 +584,8 @@ namespace DokaponKingdomRandomizer
                 outputLog.WriteLine(" Randomized Monsters: " + randoMonster);
                 outputLog.WriteLine(" Randomized Shops: " + randoShops);
                 outputLog.WriteLine(" Randomized Drops: " + randoDrops);
+                outputLog.WriteLine(" Allow Exploitables: " + randoExploits);
+                outputLog.WriteLine(" Randomized Prank Names: " + randoPrankNames);
                 outputLog.WriteLine(" Randomized Prices: " + randoPrices);
                 outputLog.WriteLine("#########################################");
                 outputLog.WriteLine(" Seriously Randomized Equipment: " + randoEquipSerious);
@@ -638,6 +656,7 @@ namespace DokaponKingdomRandomizer
             fileData = randoMonster ? RandomizeMonsters(version, filePath, fileData, settings: new List<object>() { randoSeed, randoMonsterSerious, randoMonsterMultiplier, randoMonsterVarianceBase, randoOutputLog }) : fileData;
             fileData = randoShops ? RandomizeShops(version, filePath, fileData, settings: new List<object>() { randoSeed, randoExploits, randoOutputLog }) : fileData;
             fileData = randoDrops ? RandomizeDrops(version, filePath, fileData, settings: new List<object>() { randoSeed, randoExploits, randoOutputLog }) : fileData;
+            fileData = randoPrankNames ? RandomizePrankNames(version, filePath, fileData, settings: new List<object>() { randoSeed, randoOutputLog }) : fileData;
 
             // Save the file data
             Console.WriteLine("Saving data to " + filePath + "...");
@@ -714,6 +733,79 @@ namespace DokaponKingdomRandomizer
                     break;
             }
             return ID;
+        }
+
+        // Prank Names Randomizer function
+        public static byte[] RandomizePrankNames(int version, string filePath, byte[] fileData, List<object> settings)
+        {
+            // If the version value doesn't correlate to the PC version, return.
+            if (version != 1)
+            { return fileData; }
+
+            // If you don't supply the right settings, just fallback to original data.
+            if (settings.Count() != 2)
+            {
+                Console.WriteLine("Error: RandomizeDrops() -> settings doesn't have 2 values.");
+                return fileData;
+            }
+
+            Console.WriteLine("Randomizing Prank Names...");
+            // I'm not going to explain the Regex here, it's complicated.
+            Regex rgx_pranknames = new("(?s)(\\xBF\\x00\\x00\\x00)([\\x00-\\xFF]{4})([\\x01-\\xFF]{4,12}?\\x00{1,4}?)");
+
+            Random RNG = new((int)settings[0]);
+
+            // Create File String
+            string fileString = Convert(fileData);
+
+            // Grab Prank Names file contents
+            string[] PrankNames = File.ReadAllLines(AppContext.BaseDirectory + "pranknames.txt");
+
+            // Write to output log, if it exists
+            StreamWriter outputLog;
+            if ((bool)settings[1]) { using (outputLog = File.AppendText(filePath + "_" + (int)settings[0] + ".txt")) { outputLog.WriteLine("\n\n == PRANK NAMES TABLE == "); outputLog.Close(); } }
+
+            MatchCollection pranknames = rgx_pranknames.Matches(fileString, LocPrankNames[version]);
+
+            foreach (Match s in pranknames)
+            {
+                // Split the groups found using Regex
+                GroupCollection g = s.Groups;
+
+                // Check if over a specific distance in the file, then break if it is.
+                if (g[0].Index >= LocPrankNames[version] + 0x7E8) { break; }
+
+                string oldName = g[3].Value;
+                string newName = "";
+                int searches = 0;
+                do
+                {
+                    searches++;
+                    newName = PrankNames[RNG.Next(PrankNames.Length - 1)];
+                    if (newName.Length < oldName.Length)
+                    { break; }
+                    if (searches == 100)
+                    { newName = oldName; }
+                }
+                while (searches < 100);
+
+                // Substring Replacement Loop
+                for (int i = 0; i < g[3].Length; i += 1)
+                {
+                    char c;
+                    if (i < newName.Length)
+                    { c = newName[i]; }
+                    else { c = ((byte)0x00).ToString().ToCharArray()[0]; }
+
+                    fileData[g[3].Index + i] = (byte)c;
+                }
+
+                // Write to Output Log in Detail, if enabled
+                if ((bool)settings[1]) { using (outputLog = File.AppendText(filePath + "_" + (int)settings[0] + ".txt")) { outputLog.WriteLine("Prank Name Changes: " + oldName + " -> " + newName); outputLog.Close(); } }
+            }
+
+            fileString = "";
+            return fileData;
         }
 
         // Drop Randomizer function
